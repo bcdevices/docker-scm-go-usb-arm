@@ -19,6 +19,7 @@ ENV LANG=C.UTF-8
 # Install needed packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		crossbuild-essential-armhf \
+		libftdi1-dev \
 		libusb-1.0-0-dev \
 		unzip \
 		zip \
@@ -26,5 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN dpkg --add-architecture armhf \
   && apt-get update \
-  && apt-get -y install --no-install-recommends libusb-1.0-0-dev:armhf \
+  && apt-get -y install --no-install-recommends \
+		libftdi1-dev \
+		libusb-1.0-0-dev:armhf \
   && rm -rf /var/lib/apt/lists/*
