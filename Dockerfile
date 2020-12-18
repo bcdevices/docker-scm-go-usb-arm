@@ -1,4 +1,4 @@
-FROM golang:1.14.13-buster
+FROM golang:1.15.6-buster
 
 # Setup environment
 ENV DEBIAN_FRONTEND noninteractive
