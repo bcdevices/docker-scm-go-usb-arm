@@ -1,4 +1,4 @@
-FROM golang:1.12.4-stretch
+FROM golang:1.14.13-stretch
 
 # Setup environment
 ENV DEBIAN_FRONTEND noninteractive
