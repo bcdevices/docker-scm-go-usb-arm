@@ -1,4 +1,4 @@
-name: Create and publish Docker image with Zephyr
+name: Create and publish Docker image
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
       - 'master'
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: 'bcdevices/scm-go-usb-armhf' 
+  IMAGE_NAME: 'bcdevices/scm-go-usb-arm' 
 
 jobs:
   build-and-push-image:
