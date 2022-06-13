@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		libusb-1.0-0-dev \
 		unzip \
 		zip \
+		libzmq3-dev \
 	  && rm -rf /var/lib/apt/lists/*
 
 # hadolint ignore=DL3008
