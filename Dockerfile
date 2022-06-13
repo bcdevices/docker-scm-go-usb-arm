@@ -37,4 +37,6 @@ RUN dpkg --add-architecture armhf \
 		libftdi1-dev \
 		libusb-1.0-0-dev:arm64 \
 		libusb-1.0-0-dev:armhf \
+		libzmq3-dev:arm64 \
+		libzmq3-dev:armhf \
   && rm -rf /var/lib/apt/lists/*
