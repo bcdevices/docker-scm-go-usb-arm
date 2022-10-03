@@ -34,7 +34,8 @@ RUN dpkg --add-architecture armhf \
   && dpkg --add-architecture arm64 \
   && apt-get update \
   && apt-get -y install --no-install-recommends \
-		libftdi1-dev \
+		libftdi1-dev:arm64 \
+		libftdi1-dev:armhf \
 		libusb-1.0-0-dev:arm64 \
 		libusb-1.0-0-dev:armhf \
 		libzmq3-dev:arm64 \
