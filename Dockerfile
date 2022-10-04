@@ -20,8 +20,6 @@ ENV LANG=C.UTF-8
 # Install needed packages
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
-		crossbuild-essential-arm64 \
-		crossbuild-essential-armhf \
 		libftdi1-dev \
 		libusb-1.0-0-dev \
 		unzip \
