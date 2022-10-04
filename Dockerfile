@@ -27,16 +27,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		unzip \
 		zip \
 		libzmq3-dev \
-	  && rm -rf /var/lib/apt/lists/*
+		libftdi1-dev  \
+    && rm -rf /var/lib/apt/lists/*
 
-# hadolint ignore=DL3008
-RUN dpkg --add-architecture armhf \
-  && dpkg --add-architecture arm64 \
-  && apt-get update \
-  && apt-get -y install --no-install-recommends \
-		libftdi1-dev \
-		libusb-1.0-0-dev:arm64 \
-		libusb-1.0-0-dev:armhf \
-		libzmq3-dev:arm64 \
-		libzmq3-dev:armhf \
-  && rm -rf /var/lib/apt/lists/*
