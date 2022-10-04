@@ -22,6 +22,7 @@ ENV LANG=C.UTF-8
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		crossbuild-essential-arm64 \
 		crossbuild-essential-armhf \
+		libftdi1 \
 		libftdi1-dev \
 		libusb-1.0-0-dev \
 		unzip \
@@ -34,10 +35,19 @@ RUN dpkg --add-architecture armhf \
   && dpkg --add-architecture arm64 \
   && apt-get update \
   && apt-get -y install --no-install-recommends \
-		libftdi1-dev:arm64 \
-		libftdi1-dev:armhf \
+		libftdi1-dev \
 		libusb-1.0-0-dev:arm64 \
 		libusb-1.0-0-dev:armhf \
 		libzmq3-dev:arm64 \
 		libzmq3-dev:armhf \
+  && rm -rf /var/lib/apt/lists/*
+
+# hadolint ignore=DL3008
+RUN dpkg --add-architecture armhf \
+  && dpkg --add-architecture arm64 \
+  && apt-get update \
+  && apt-get download libftdi1-dev:arm64 \
+  && dpkg --force-overwrite --force-depends -i libftdi1-dev_1.4-1+b2_arm64.deb \
+  && apt-get download libftdi1-dev:armhf \
+  && dpkg --force-overwrite --force-depends -i libftdi1-dev_1.4-1+b2_armhf.deb \
   && rm -rf /var/lib/apt/lists/*
