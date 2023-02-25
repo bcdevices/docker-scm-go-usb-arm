@@ -1,4 +1,4 @@
-FROM	golang:1.19.6-bullseye
+FROM	golang:1.20.1-bullseye
 
 ENV	DEBIAN_FRONTEND	noninteractive
 ENV	TERM	xterm
