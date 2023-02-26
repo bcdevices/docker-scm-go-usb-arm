@@ -19,6 +19,6 @@ ENV	PKGS="$(PKGS) libzmq3-dev:armhf"
 # hadolint ignore=DL3008
 RUN	apt-get update \
 	&& dpkg --add-architecture arm64 \
-	&& dpkg --add-architecture arm64 \
+	&& dpkg --add-architecture armhf \
 	&& apt-get install -y --no-install-recommends $(PKGS) \
 	&& rm -rf /var/lib/apt/lists/*
