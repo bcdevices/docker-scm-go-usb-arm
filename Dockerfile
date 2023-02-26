@@ -16,7 +16,7 @@ ENV	PKGS="$(PKGS) libftdi1-dev:armhf"
 ENV	PKGS="$(PKGS) libusb-1.0-0-dev:armhf"
 ENV	PKGS="$(PKGS) libzmq3-dev:armhf"
 
-# hadolint ignore=DL3008
+# hadolint ignore=DL3008,SC2046
 RUN	apt-get update \
 	&& dpkg --add-architecture arm64 \
 	&& dpkg --add-architecture armhf \
