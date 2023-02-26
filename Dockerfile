@@ -4,17 +4,22 @@ ARG	PKGS
 ENV	PKGS="$(PKGS)"
 ENV	PKGS="$(PKGS) unzip"
 ENV	PKGS="$(PKGS) zip"
+
 ENV	PKGS="$(PKGS) libftdi1-dev"
 ENV	PKGS="$(PKGS) libusb-1.0-0-dev"
 ENV	PKGS="$(PKGS) libzmq3-dev"
-ENV	PKGS="$(PKGS) crossbuild-essential-arm64"
-#ENV	PKGS="$(PKGS) libftdi1-dev:arm64"
-ENV	PKGS="$(PKGS) libusb-1.0-0-dev:arm64"
-ENV	PKGS="$(PKGS) libzmq3-dev:arm64"
-ENV	PKGS="$(PKGS) crossbuild-essential-armhf"
-#ENV	PKGS="$(PKGS) libftdi1-dev:armhf"
-ENV	PKGS="$(PKGS) libusb-1.0-0-dev:armhf"
-ENV	PKGS="$(PKGS) libzmq3-dev:armhf"
+
+ENV	ARCH="arm64"
+ENV	PKGS="$(PKGS) crossbuild-essential-${ARCH}"
+#ENV	PKGS="$(PKGS) libftdi1-dev:${ARCH}"
+ENV	PKGS="$(PKGS) libusb-1.0-0-dev:${ARCH}"
+ENV	PKGS="$(PKGS) libzmq3-dev:${ARCH}"
+
+ENV	ARCH="armhf"
+ENV	PKGS="$(PKGS) crossbuild-essential-${ARCH}"
+#ENV	PKGS="$(PKGS) libftdi1-dev:${ARCH}"
+ENV	PKGS="$(PKGS) libusb-1.0-0-dev:${ARCH}"
+ENV	PKGS="$(PKGS) libzmq3-dev:${ARCH}"
 
 # hadolint ignore=DL3008,SC2046
 RUN	apt-get update \
