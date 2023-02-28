@@ -9,6 +9,7 @@ ENV	PKGS="$(PKGS) crossbuild-essential-arm64"
 ENV	PKGS="$(PKGS) libusb-1.0-0-dev:arm64"
 ENV	PKGS="$(PKGS) crossbuild-essential-armhf"
 ENV	PKGS="$(PKGS) libusb-1.0-0-dev:armhf"
+
 # hadolint ignore=DL3008,SC2046
 RUN	apt-get update \
 	&& dpkg --add-architecture arm64 \
