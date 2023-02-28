@@ -1,7 +1,5 @@
 # scm-go-usb-arm
 
-# scm-go-usb-linux
-
 Docker image with:
 - golang
 - libusb-1.0-0-dev

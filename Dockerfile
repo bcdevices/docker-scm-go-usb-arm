@@ -1,17 +1,19 @@
-ARG	GOLANG_VERSION=1.20.1
+ARG	GOLANG_VERSION="1.20.1"
 FROM	golang:${GOLANG_VERSION}-bullseye
 ARG	PKGS
-ENV	PKGS="$(PKGS) zip"
 ENV	PKGS="$(PKGS)"
-ENV	PKGS="$(PKGS) unzip"
-ENV	PKGS="$(PKGS) libusb-1.0-0-dev"
+ENV	PKGS="$(PKGS) crossbuild-essential-amd64"
 ENV	PKGS="$(PKGS) crossbuild-essential-arm64"
-ENV	PKGS="$(PKGS) libusb-1.0-0-dev:arm64"
 ENV	PKGS="$(PKGS) crossbuild-essential-armhf"
+ENV	PKGS="$(PKGS) libusb-1.0-0-dev"
+ENV	PKGS="$(PKGS) libusb-1.0-0-dev:amd64"
+ENV	PKGS="$(PKGS) libusb-1.0-0-dev:arm64"
 ENV	PKGS="$(PKGS) libusb-1.0-0-dev:armhf"
-
+ENV	PKGS="$(PKGS) unzip"
+ENV	PKGS="$(PKGS) zip"
 # hadolint ignore=DL3008,SC2046
 RUN	apt-get update \
+	&& dpkg --add-architecture amd64 \
 	&& dpkg --add-architecture arm64 \
 	&& dpkg --add-architecture armhf \
 	&& apt-get install -y --no-install-recommends $(PKGS) \
