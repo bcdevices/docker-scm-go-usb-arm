@@ -1,18 +1,20 @@
-on: pull_request
-name: hadolint action
+name: hadolint
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 jobs:
-  hadolintOnPr:
-    name: hadolint on pr
-    runs-on: ubuntu-latest
+  hadolint:
+    runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v3
-    - name: hadolint on pr
-      uses: burdzwastaken/hadolint-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        HADOLINT_ACTION_DOCKERFILE_FOLDER: .
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Run hadolint
+      uses: hadolint/hadolint-action@v3.1.0
+      with:
+        dockerfile: Dockerfile
     - name: "hadolint: elixir"
-      uses: burdzwastaken/hadolint-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        HADOLINT_ACTION_DOCKERFILE_FOLDER: ./elixir
+      uses: hadolint/hadolint-action@v3.1.0
+      with:
+        dockerfile: ./elixir/Dockerfile
