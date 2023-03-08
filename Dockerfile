@@ -1,5 +1,5 @@
 ARG	GOLANG_VERSION="1.20.1"
-FROM	golang:${GOLANG_VERSION}-bullseye
+FROM	golang:${GOLANG_VERSION}-jammy
 ARG	PKGS
 # hadolint ignore=DL3008,SC2046
 RUN	dpkg --add-architecture amd64 \
