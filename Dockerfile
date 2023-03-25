@@ -70,7 +70,7 @@ ENV PKGS="${PKGS} libusb-1.0-0-dev"
 ENV PKGS="${PKGS} zip"
 
 # DL3008: `apt-get install <package>=<version>` (intentional)
-# hadolint ignore=DL3008
+# hadolint ignore=DL3008,SC2028
 RUN set -eux; \
 	echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse\n\
 deb [arch=amd64] http://security.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse\n\
