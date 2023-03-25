@@ -22,9 +22,6 @@ jobs:
     runs-on: ubuntu-20.04
     container:
       image: ghcr.io/bcdevices/scm-go-usb-arm:v1.20.1-jammy-2
-      credentials:
-        username: bcdbuildbot
-        password: ${{ secrets.BUILDBOT_GITHUB_TOKEN }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
