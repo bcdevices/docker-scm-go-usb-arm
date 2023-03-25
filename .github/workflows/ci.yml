@@ -1,0 +1,52 @@
+# scm-go-usb:ci
+name: CI
+
+on: pull_request
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    container:
+      image: ghcr.io/bcdevices/scm-go-usb-arm:v1.20.1-jammy-2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Unit Testing
+      run: |
+        make test
+
+  build-linux-amd64:
+    runs-on: ubuntu-20.04
+    container:
+      image: ghcr.io/bcdevices/scm-go-usb-arm:v1.20.1-jammy-2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Build linux-amd64
+      run: |
+        TARGET_ARCH="linux-amd64" make all
+
+  build-linux-arm64:
+    runs-on: ubuntu-20.04
+    container:
+      image: ghcr.io/bcdevices/scm-go-usb-arm:v1.20.1-jammy-2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Build linux-arm64
+      run: |
+        TARGET_ARCH="linux-arm64" make all
+
+  build-linux-armhf:
+    runs-on: ubuntu-20.04
+    container:
+      image: ghcr.io/bcdevices/scm-go-usb-arm:v1.20.1-jammy-2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Build linux-armhf
+      run: |
+        TARGET_ARCH="linux-armhf" make all
