@@ -1,4 +1,4 @@
-# scm-go-usb-arm
+# scm-go-usb
 
 Docker image for Go cross-compilation with libusb support.
 
