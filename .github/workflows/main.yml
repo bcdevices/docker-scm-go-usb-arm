@@ -7,10 +7,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Unit Testing
+    - name: Build
       uses: ./.github/actions/build
-    - name: Create zip
-      run: make dist-archive
     - name: Upload Release
       if: contains(github.ref, 'tags')
       uses: svenstaro/upload-release-action@v2
