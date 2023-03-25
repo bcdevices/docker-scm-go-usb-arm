@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: 'bcdevices/scm-go-usb'
+  IMAGE_NAME: 'bcdevices/scm-go-usb-arm'
 
 jobs:
   build:
