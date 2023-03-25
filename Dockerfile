@@ -85,10 +85,4 @@ deb [arch=arm64,armhf] http://ports.ubuntu.com/ jammy-backports main restricted 
 	dpkg --add-architecture "armhf"; \
 	apt-get update; \
 	apt-get -y install --no-install-recommends ${PKGS}; \
-	rm -rf /var/lib/apt/lists/*; \
-	mkdir -p "${TARGET_WORKDIR}"
-
-WORKDIR ${TARGET_WORKDIR}
-
-#COPY entrypoint.sh /entrypoint.sh
-#ENTRYPOINT ["/entrypoint.sh"]
+	rm -rf /var/lib/apt/lists/*
