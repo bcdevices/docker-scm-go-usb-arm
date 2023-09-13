@@ -1,6 +1,6 @@
 # scm-go-usb-build
 
-ARG GOLANG_VERSION="1.20.1"
+ARG GOLANG_VERSION="1.21.1"
 ARG GOUSB_HOSTOS="jammy"
 ARG GOUSB_VERSION="2"
 FROM ghcr.io/bcdevices/scm-go-usb-arm:v${GOLANG_VERSION}-${GOUSB_HOSTOS}-${GOUSB_VERSION}
