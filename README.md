@@ -6,7 +6,6 @@ Target platforms:
 - Host: container image platform (Linux/AArch64, Linux/x86\_64)
 - `linux/amd64`: Linux/x86\_64
 - `linux/arm64`: Linux/AArch64
-- `linux/armhf`: Linux/armv7+
 
 ## Including additional packages
 
@@ -16,7 +15,7 @@ with a `PKGS` build argument.
 ```Shell
 # Include libzmq3-dev, for all supported targets
 docker build \
-  --build-arg PKGS="libzmq3-dev libzmq3-dev:amd64 libzmq3-dev:arm64 libzmq3-dev:armhf" \
+  --build-arg PKGS="libzmq3-dev libzmq3-dev:amd64 libzmq3-dev:arm64" \
   .
 ```
 
