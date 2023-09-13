@@ -2,7 +2,7 @@
 ARG BUILDPACK_HOSTOS="jammy"
 FROM buildpack-deps:${BUILDPACK_HOSTOS}-scm
 
-ENV GOLANG_VERSION="1.20.1"
+ENV GOLANG_VERSION="1.21.1"
 
 # hadolint ignore=DL3008
 RUN set -eux; \
@@ -24,16 +24,16 @@ RUN set -eux; \
 	url=; \
 	case "$arch" in \
 		'amd64') \
-			url='https://dl.google.com/go/go1.20.1.linux-amd64.tar.gz'; \
-			sha256='000a5b1fca4f75895f78befeb2eecf10bfff3c428597f3f1e69133b63b911b02'; \
+			url='https://dl.google.com/go/go1.21.1.linux-amd64.tar.gz'; \
+			sha256='b3075ae1ce5dab85f89bc7905d1632de23ca196bd8336afd93fa97434cfa55ae'; \
 			;; \
 		'armhf') \
-			url='https://dl.google.com/go/go1.20.1.linux-armv6l.tar.gz'; \
-			sha256='e4edc05558ab3657ba3dddb909209463cee38df9c1996893dd08cde274915003'; \
+			url='https://dl.google.com/go/go1.21.1.linux-armv6l.tar.gz'; \
+			sha256='f3716a43f59ae69999841d6007b42c9e286e8d8ce470656fb3e70d7be2d7ca85'; \
 			;; \
 		'arm64') \
-			url='https://dl.google.com/go/go1.20.1.linux-arm64.tar.gz'; \
-			sha256='5e5e2926733595e6f3c5b5ad1089afac11c1490351855e87849d0e7702b1ec2e'; \
+			url='https://dl.google.com/go/go1.21.1.linux-arm64.tar.gz'; \
+			sha256='7da1a3936a928fd0b2602ed4f3ef535b8cd1990f1503b8d3e1acc0fa0759c967'; \
 			;; \
 		*) echo >&2 "error: unsupported architecture '$arch' (likely packaging update needed)"; exit 1 ;; \
 	esac; \
