@@ -27,10 +27,6 @@ RUN set -eux; \
 			url='https://dl.google.com/go/go1.21.1.linux-amd64.tar.gz'; \
 			sha256='b3075ae1ce5dab85f89bc7905d1632de23ca196bd8336afd93fa97434cfa55ae'; \
 			;; \
-		'armhf') \
-			url='https://dl.google.com/go/go1.21.1.linux-armv6l.tar.gz'; \
-			sha256='f3716a43f59ae69999841d6007b42c9e286e8d8ce470656fb3e70d7be2d7ca85'; \
-			;; \
 		'arm64') \
 			url='https://dl.google.com/go/go1.21.1.linux-arm64.tar.gz'; \
 			sha256='7da1a3936a928fd0b2602ed4f3ef535b8cd1990f1503b8d3e1acc0fa0759c967'; \
@@ -64,8 +60,6 @@ ENV PKGS="${PKGS} crossbuild-essential-amd64"
 ENV PKGS="${PKGS} libusb-1.0-0-dev:amd64"
 ENV PKGS="${PKGS} crossbuild-essential-arm64"
 ENV PKGS="${PKGS} libusb-1.0-0-dev:arm64"
-ENV PKGS="${PKGS} crossbuild-essential-armhf"
-ENV PKGS="${PKGS} libusb-1.0-0-dev:armhf"
 ENV PKGS="${PKGS} libusb-1.0-0-dev"
 ENV PKGS="${PKGS} zip"
 
@@ -76,13 +70,12 @@ RUN set -eux; \
 deb [arch=amd64] http://security.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse\n\
 deb [arch=amd64] http://security.ubuntu.com/ubuntu jammy-security main restricted universe multiverse\n\
 deb [arch=amd64] http://archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse\n\
-deb [arch=arm64,armhf] http://ports.ubuntu.com/ jammy main restricted universe multiverse\n\
-deb [arch=arm64,armhf] http://ports.ubuntu.com/ jammy-updates main restricted universe multiverse\n\
-deb [arch=arm64,armhf] http://ports.ubuntu.com/ jammy-security main restricted universe multiverse\n\
-deb [arch=arm64,armhf] http://ports.ubuntu.com/ jammy-backports main restricted universe multiverse" > /etc/apt/sources.list; \
+deb [arch=arm64] http://ports.ubuntu.com/ jammy main restricted universe multiverse\n\
+deb [arch=arm64] http://ports.ubuntu.com/ jammy-updates main restricted universe multiverse\n\
+deb [arch=arm64] http://ports.ubuntu.com/ jammy-security main restricted universe multiverse\n\
+deb [arch=arm64] http://ports.ubuntu.com/ jammy-backports main restricted universe multiverse" > /etc/apt/sources.list; \
 	dpkg --add-architecture "amd64"; \
 	dpkg --add-architecture "arm64"; \
-	dpkg --add-architecture "armhf"; \
 	apt-get update; \
 	apt-get -y install --no-install-recommends ${PKGS}; \
 	rm -rf /var/lib/apt/lists/*

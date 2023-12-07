@@ -23,7 +23,6 @@ TARGET_ARCHS :=
 TARGET_ARCHS += host
 TARGET_ARCHS += linux-amd64
 TARGET_ARCHS += linux-arm64
-TARGET_ARCHS += linux-armhf
 ifneq ($(TARGET_ARCH),)
   ifeq ($(filter $(TARGET_ARCH),$(TARGET_ARCHS)),)
     $(error "Invalid TARGET_ARCH: $(TARGET_ARCH), not in: $(TARGET_ARCHS)")
@@ -31,11 +30,9 @@ ifneq ($(TARGET_ARCH),)
 endif
 GCCTRIPLET_linux-amd64 := x86_64-linux-gnu
 GCCTRIPLET_linux-arm64 := aarch64-linux-gnu
-GCCTRIPLET_linux-armhf := arm-linux-gnueabihf
 GCCTRIPLETS :=
 GCCTRIPLETS += $(GCCTRIPLET_linux-amd64)
 GCCTRIPLETS += $(GCCTRIPLET_linux-arm64)
-GCCTRIPLETS += $(GCCTRIPLET_linux-armhf)
 GCCTRIPLET_CROSS ?= $(GCCTRIPLET_$(TARGET_ARCH))
 ifneq ($(GCCTRIPLET_CROSS),)
   ifeq ($(filter $(GCCTRIPLET_CROSS),$(GCCTRIPLETS)),)
@@ -55,7 +52,6 @@ GO_BUILD ?= CC=$(CC) CGO_ENABLED=$(CGO_ENABLED) $(GO) build $(GO_BUILD_OPTS)
 GO_TEST ?= CC=$(CC) CGO_ENABLED=$(CGO_ENABLED) $(GO) test $(GO_BUILD_OPTS)
 GOARCH_linux-amd64 := amd64
 GOARCH_linux-arm64 := arm64
-GOARCH_linux-armhf := arm
 GOARCH_CROSS ?= $(GOARCH_$(TARGET_ARCH))
 GOARM_CROSS ?= 7
 GOOS_CROSS := linux
@@ -70,8 +66,6 @@ BINS_amd64 :=
 BINS_amd64 += build/linux-amd64/bin/deps
 BINS_arm64 :=
 BINS_arm64 += build/linux-arm64/bin/deps
-BINS_armhf :=
-BINS_armhf += build/linux-armhf/bin/deps
 BINS_host :=
 BINS_host += build/bin/deps
 INSTALL_FILES :=
@@ -82,9 +76,6 @@ ifeq ($(TARGET_ARCH),)
 endif
 ifeq ($(TARGET_ARCH),linux-arm64)
   BINS += $(BINS_arm64)
-endif
-ifeq ($(TARGET_ARCH),linux-armhf)
-  BINS += $(BINS_armhf)
 endif
 ifeq ($(TARGET_ARCH),linux-amd64)
   BINS += $(BINS_amd64)
@@ -215,4 +206,4 @@ docker-%: check-docker-host
 		-t "$(DOCKER_TAG_BASE)-$*" \
 		/bin/bash -c "TARGET_ARCH=linux-$* VERBOSE=$(VERBOSE) make docker-guest"
 .PHONY: docker
-docker: docker-amd64 docker-arm64 docker-armhf
+docker: docker-amd64 docker-arm64
