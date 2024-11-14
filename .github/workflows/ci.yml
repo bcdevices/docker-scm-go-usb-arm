@@ -13,7 +13,7 @@ jobs:
       image: ghcr.io/bcdevices/scm-go-usb-arm:v1.21.1-jammy-2
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Unit Testing
       run: |
         make test
@@ -24,7 +24,7 @@ jobs:
       image: ghcr.io/bcdevices/scm-go-usb-arm:v1.21.1-jammy-2
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Build linux-amd64
       run: |
         TARGET_ARCH="linux-amd64" make all
@@ -35,7 +35,7 @@ jobs:
       image: ghcr.io/bcdevices/scm-go-usb-arm:v1.21.1-jammy-2
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Build linux-arm64
       run: |
         TARGET_ARCH="linux-arm64" make all
