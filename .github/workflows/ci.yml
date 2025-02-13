@@ -8,7 +8,7 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/bcdevices/scm-go-usb-arm:v1.21.1-jammy-2
     steps:
@@ -19,7 +19,7 @@ jobs:
         make test
 
   build-linux-amd64:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/bcdevices/scm-go-usb-arm:v1.21.1-jammy-2
     steps:
@@ -30,7 +30,7 @@ jobs:
         TARGET_ARCH="linux-amd64" make all
 
   build-linux-arm64:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/bcdevices/scm-go-usb-arm:v1.21.1-jammy-2
     steps:
