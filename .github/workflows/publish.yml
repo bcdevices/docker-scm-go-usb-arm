@@ -28,8 +28,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v3
+    #- name: Set up QEMU
+    #  uses: docker/setup-qemu-action@v3
 
     - name: Setup Docker buildx
       uses: docker/setup-buildx-action@v3
@@ -63,7 +63,8 @@ jobs:
       with:
         context: .
         provenance: false
-        platforms: linux/amd64,linux/arm64
+        #platforms: linux/amd64,linux/arm64
+        platforms: linux/amd64
         push: ${{ github.event_name != 'pull_request' }}
         build-args: gh_access_token=${{ secrets.BUILDBOT_GITHUB_TOKEN }}
         tags: ${{ steps.meta.outputs.tags }}
