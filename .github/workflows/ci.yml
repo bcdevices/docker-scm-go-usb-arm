@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/bcdevices/scm-go-usb-arm:v1.21.1-jammy-2
+      image: ghcr.io/bcdevices/scm-go-usb-arm:v1.23.4-jammy-1
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -21,7 +21,7 @@ jobs:
   build-linux-amd64:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/bcdevices/scm-go-usb-arm:v1.21.1-jammy-2
+      image: ghcr.io/bcdevices/scm-go-usb-arm:v1.23.4-jammy-1
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
   build-linux-arm64:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/bcdevices/scm-go-usb-arm:v1.21.1-jammy-2
+      image: ghcr.io/bcdevices/scm-go-usb-arm:v1.23.4-jammy-1
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
