@@ -1,5 +1,5 @@
 # scm-go-usb-lint: Alpine-based reviewdog-golangci image with libusb support.
-ARG GOLANG_VERSION="1.23.4"
+ARG GOLANG_VERSION="1.24.1"
 FROM golang:${GOLANG_VERSION}-alpine
 ARG GOLANGCI_LINT_VERSION="1.51.2"
 ARG REVIEWDOG_VERSION="0.14.1"

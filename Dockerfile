@@ -2,7 +2,7 @@
 ARG BUILDPACK_HOSTOS="jammy"
 FROM buildpack-deps:${BUILDPACK_HOSTOS}-scm
 
-ENV GOLANG_VERSION="1.23.4"
+ENV GOLANG_VERSION="1.24.1"
 
 # hadolint ignore=DL3008
 RUN set -eux; \
@@ -24,11 +24,11 @@ RUN set -eux; \
 	url=; \
 	case "$arch" in \
 		'amd64') \
-			url='https://dl.google.com/go/go1.23.4.linux-amd64.tar.gz'; \
+			url='https://dl.google.com/go/go1.24.1.linux-amd64.tar.gz'; \
 			sha256='6924efde5de86fe277676e929dc9917d466efa02fb934197bc2eba35d5680971'; \
 			;; \
 		'arm64') \
-			url='https://dl.google.com/go/go1.23.4.linux-arm64.tar.gz'; \
+			url='https://dl.google.com/go/go1.24.1.linux-arm64.tar.gz'; \
 			sha256='16e5017863a7f6071363782b1b8042eb12c6ca4f4cd71528b2123f0a1275b13e'; \
 			;; \
 		*) echo >&2 "error: unsupported architecture '$arch' (likely packaging update needed)"; exit 1 ;; \
